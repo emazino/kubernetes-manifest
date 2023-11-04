@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: webapps
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tesla
+  template:
+    metadata:
+      name: webapps
+      labels:
+        app: tesla
+    spec:
+      containers:
+      - name: app
+        image: mylandmarktech/maven-web-app
+        resources:
+          requests:
+            cpu: "1000"
+            memory: "256Mi"
+          limits:
+            cpu: "1000"
+            memory: "256Mi"
+        ports:
+        - containerPort: 8080

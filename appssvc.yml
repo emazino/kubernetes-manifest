@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: appsvc22 
+spec:
+  selector:
+    app: fe 
+  type: NodePort
+  ports:
+  - targetPort: 8080
+    nodePort: 32500
+    port: 80 

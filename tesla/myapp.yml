@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+       maxSurge: 1
+       maxUnavailable: 1
+  minReadySeconds: 30   
+  selector:
+    matchLabels:
+      app: myapp 
+  template:
+    metadata:
+      name: myapp
+      labels:
+        app: myapp  
+    spec:
+      containers:
+      - name: myappc  
+        image: mylandmarktech/maven-web-app:29 
+        ports:
+        - containerPort: 80 

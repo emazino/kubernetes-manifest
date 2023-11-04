@@ -1,0 +1,22 @@
+kind: ReplicationController  
+apiVersion: v1    
+metadata: 
+  name: apprc  
+  namespace: dev  
+  labels: 
+    app: myapp     
+spec:
+   selector:
+      app: fe  
+   replicas: 2
+   template: #podTemplate
+     metadata:
+       name: apppod  
+       labels:
+         app: fe     
+     spec:
+       containers:
+       - name: web
+         image: mylandmarktech/java-web-app
+         ports:
+         - containerPort: 8080
